@@ -76,3 +76,30 @@ form button{
     text-decoration: line-through;
     opacity: 0.5;
 }
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+}
+.select{
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+select{
+    color: rgb(226, 125, 29);
+    width: 10rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+.select::after{
+    content: '\25BC';
+    position: absolute;
+    background: rgb(226, 125, 29);
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    pointer-events: none;
+}
