@@ -2,7 +2,7 @@
 const todoList = document.querySelector('.todo-list');
 const todoInput = document.querySelector('.todoinput');
 const todoButton = document.querySelector('.submit');
-const filterOption = document.querySelector('.filter-todo')
+const filterOption = document.querySelector('.filter-todo');
 
 //events
 document.addEventListener('DOMContentLoaded', getTodos)
@@ -41,7 +41,9 @@ function addTodo(e){
 
     todoList.appendChild(todoDiv)
 
+
     todoInput.value = ''
+
 }
 
 function deleteCheck(e) {
@@ -125,8 +127,9 @@ function removalLocalTodos(todo){
 
 function filterTodo(e){
     const todos = todoList.childNodes;
+    const option = filterOption.value
     todos.forEach(function(todo){
-        switch(e.target.value){
+        switch(option){
             case "all":
                 todo.style.display = 'flex'
                 break;

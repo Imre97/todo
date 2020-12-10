@@ -5,7 +5,7 @@
 }
 body{
     min-height: 100vh;
-    background: linear-gradient(120deg, rgb(189, 190, 77), rgb(240, 143, 33));
+    background: linear-gradient(120deg, rgb(231, 235, 44), rgb(240, 143, 33));
     color: white;
 }
 header, form{
