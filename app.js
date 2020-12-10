@@ -125,11 +125,10 @@ function removalLocalTodos(todo){
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
-function filterTodo(){
+function filterTodo(e){
     const todos = todoList.childNodes;
-    const option = filterOption.value
     todos.forEach(function(todo){
-        switch(option){
+        switch(e.target.value){
             case "all":
                 todo.style.display = 'flex'
                 break;
