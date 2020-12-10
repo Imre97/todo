@@ -8,7 +8,7 @@ const filterOption = document.querySelector('.filter-todo');
 document.addEventListener('DOMContentLoaded', getTodos)
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
-filterOption.addEventListener('click', filterTodo)
+filterOption.onchange = function() {filterTodo()}
 
 //function
 function addTodo(e){
@@ -125,7 +125,7 @@ function removalLocalTodos(todo){
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
-function filterTodo(e){
+function filterTodo(){
     const todos = todoList.childNodes;
     const option = filterOption.value
     todos.forEach(function(todo){
