@@ -7,7 +7,8 @@ const filterOption = document.querySelector('.filter-todo');
 //events
 document.addEventListener('DOMContentLoaded', getTodos)
 todoButton.addEventListener('click', addTodo);
-todoList.addEventListener('click', deleteCheck);
+todoList.addEventListener('click', deleted);
+todoList.addEventListener('click', checked);
 filterOption.addEventListener('change', filterTodo)
 
 //function
@@ -18,7 +19,7 @@ function addTodo(e){
     const todoDiv = document.createElement('div')
     todoDiv.classList.add('todo')
 
-    saveLocalStorage(todoInput.value)
+    saveLocalStorage({value: todoInput.value, isDone: false})
 
     //newtodo
     const newTodo = document.createElement('li')
@@ -46,7 +47,7 @@ function addTodo(e){
 
 }
 
-function deleteCheck(e) {
+function deleted(e) {
     let item = e.target;
     if (item.tagName === 'I'){
         item = item.parentElement
@@ -59,8 +60,24 @@ function deleteCheck(e) {
             todo.remove();
         })
     }
+
+}
+function checked(e){
+    let todos = JSON.parse(localStorage.getItem('todos'))
+    let item = e.target;
+    if(item.tagName === 'I'){
+        item = item.parentElement
+    }
     if(item.classList[0] === 'completed-btn'){
         const todo = item.parentElement;
+        const itemText = todo.childNodes[0].innerText;
+        const index = todos.findIndex(x => x.value === itemText)
+        if (todos[index].isDone === false){
+            todos[index].isDone = true;
+        }else{
+            todos[index].isDone = false;
+        }
+        localStorage.setItem('todos', JSON.stringify(todos));
         todo.classList.toggle('completed')
     }
 }
@@ -84,14 +101,19 @@ function getTodos(){
     } else {
         todos = JSON.parse(localStorage.getItem('todos'))
     }
-    todos.forEach(function(todo){
+    todos.forEach(function(todoItem){
          //new tododiv
     const todoDiv = document.createElement('div')
-    todoDiv.classList.add('todo')
+    if(todoItem.isDone === true){
+        todoDiv.classList.add('todo')
+        todoDiv.classList.toggle('completed')
+    }else{
+        todoDiv.classList.add('todo')
+    }
 
     //newtodo
     const newTodo = document.createElement('li')
-    newTodo.innerText = todo
+    newTodo.innerText = todoItem.value
     newTodo.classList.add('todo-item')
     todoDiv.appendChild(newTodo)
 

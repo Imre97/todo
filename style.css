@@ -12,6 +12,8 @@ header, form{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-flow: row wrap;
+    min-width: 300px;
     min-height: 20vh;
 }
 input{
