@@ -189,6 +189,7 @@ function getWeather(e){
             `
             document.querySelector('.weather-container').innerHTML = markup
         })
+        .catch(err => alert('Wring city name!'))
 
     weatherInput.value = ''
 }
