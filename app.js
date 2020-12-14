@@ -3,13 +3,16 @@ const todoList = document.querySelector('.todo-list');
 const todoInput = document.querySelector('.todoinput');
 const todoButton = document.querySelector('.submit');
 const filterOption = document.querySelector('.filter-todo');
+const weatherInput = document.querySelector('.city-input');
+const weatherButton = document.querySelector('.weather-button');
 
 //events
-document.addEventListener('DOMContentLoaded', getTodos)
+document.addEventListener('DOMContentLoaded', getTodos);
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleted);
 todoList.addEventListener('click', checked);
-filterOption.addEventListener('change', filterTodo)
+filterOption.addEventListener('change', filterTodo);
+weatherButton.addEventListener('click', getWeather);
 
 //function
 function addTodo(e){
@@ -171,4 +174,21 @@ function filterTodo(){
                 break;
         }
     })
+}
+
+function getWeather(e){
+    e.preventDefault();
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${weatherInput.value}&units=metric&appid=6e93c561fc999601868b5e103fa58d8e`)
+        .then((result) => result.json())
+        .then((data) => {
+            const markup =`
+            <h2>${data.name}</h2>
+            <div>${Math.floor(data.main.temp)}°C</div>
+            <div>min:${Math.floor(data.main.temp_min)}°C / max:${Math.floor(data.main.temp_max)}°C</div>
+            `
+            document.querySelector('.weather-container').innerHTML = markup
+        })
+
+    weatherInput.value = ''
 }

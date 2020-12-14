@@ -8,7 +8,40 @@ body{
     background: linear-gradient(120deg, rgb(231, 235, 44), rgb(240, 143, 33));
     color: white;
 }
-header, form{
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 0 0 3px black;
+    font-weight: 1000;
+    padding: 2rem;
+    justify-content: center;
+}
+.weather-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.weather-button{
+    padding: 0.2rem;
+    background: white;
+    color: rgb(240, 143, 33);
+    box-shadow: none;
+    border: none;
+}
+.city-input{
+    padding: 0.2rem;
+    box-shadow: none;
+    border: none;
+    color: black;
+}
+h1{
+    text-align: center;
+}
+.todo-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,11 +49,11 @@ header, form{
     min-width: 300px;
     min-height: 20vh;
 }
-input{
+.todoinput{
     padding: 0.8rem;
     border: none;
 }
-form button{
+.submit{
     padding: 0.8rem;
     background: white;
     color: rgb(240, 143, 33);
