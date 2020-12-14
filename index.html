@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
     <header>
+        <h2>Időjárás</h2>
         <form>
             <input type="text" placeholder="Város" class="city-input" required>
             <button class="weather-button">Lekérdez</button>
@@ -21,7 +22,7 @@
     <div class="container">
         <h1>Todo app</h1>
         <form class="todo-container">
-            <input type="text" class="todoinput">
+            <input type="text" class="todoinput" required>
             <button class="submit"><i class="fas fa-plus-square"></i></button>
             <div class="select">
                 <select class='filter-todo'>
@@ -36,6 +37,6 @@
     <div class="todo-container">
         <ul class="todo-list"></ul>
     </div>
-    <script src="./app.js"></script>
+    <script src="./js/app.js"></script>
 </body>
 </html>
